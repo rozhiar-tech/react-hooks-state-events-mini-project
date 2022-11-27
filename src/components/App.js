@@ -8,12 +8,16 @@ console.log("Here's the data you're working with");
 console.log({ CATEGORIES, TASKS });
 
 function App() {
+  const [selectedCategory, setSelectedCategory] = React.useState("All");
+  const [deleteTask, setDeleteTask] = React.useState(TASKS);
+
+
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter />
+      <CategoryFilter category={CATEGORIES} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} deleteTask={deleteTask} setDeleteTask={setDeleteTask}/>
       <NewTaskForm />
-      <TaskList />
+      <TaskList tasks={TASKS} deleteTask={deleteTask} setDeleteTask={setDeleteTask}/>
     </div>
   );
 }
